@@ -10,3 +10,6 @@ script:
   - ./vendor/bin/phpcs --standard=PSR2 src/ tests/
   - ./vendor/bin/phpunit --bootstrap ./tests/bootstrap.php tests/
 
+notifications:
+  slack: tatu:ifWJMnOS9BlzH3pxQfJryUUz
+
