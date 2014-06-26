@@ -22,6 +22,7 @@ class SlackErrorReporterTest extends \PHPUnit_Framework_TestCase
     {
         $this->slack = $this->getMockBuilder('TailoredTunes\SlackNotifier')
             ->disableOriginalClone()
+            ->disableOriginalConstructor()
             ->setMethods(array('send'))
             ->getMock();
 
