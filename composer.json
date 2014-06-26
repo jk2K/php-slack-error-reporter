@@ -14,7 +14,7 @@
 	],
 	"require": {
 		"php": ">=5.3.0",
-		"tailored-tunes/php-slack-notifier": "1.0.0"
+		"tailored-tunes/php-slack-notifier": "1.*"
 	},
 	"autoload": {
 		"psr-4": {
