@@ -67,7 +67,7 @@ class SlackErrorReporterTest extends \PHPUnit_Framework_TestCase
         $text = sprintf(
             'EXCEPTION - [0] %s:%d - %s',
             realpath(__FILE__),
-            __LINE__+4,
+            __LINE__ + 5,
             $msg
         );
         $this->slack->expects($this->once())->method('send')
