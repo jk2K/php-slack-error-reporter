@@ -1,0 +1,12 @@
+language: php
+php:
+- '5.5'
+- '5.4'
+
+install:
+   - composer install --dev
+
+script:
+  - ./vendor/bin/phpcs --standard=PSR2 src/ tests/
+  - phpunit --bootstrap ./tests/bootstrap.php tests/
+

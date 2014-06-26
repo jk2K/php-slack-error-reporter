@@ -3,9 +3,54 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "571326cf1b1552acdcb5b61e9e2fb318",
+    "hash": "93963ead7c711efcc423d3a23b16af58",
     "packages": [
-
+        {
+            "name": "tailored-tunes/php-slack-notifier",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tailored-tunes/php-slack-notifier.git",
+                "reference": "eaf417b03ec0086f163669fe51ac90dfae659ea4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tailored-tunes/php-slack-notifier/zipball/eaf417b03ec0086f163669fe51ac90dfae659ea4",
+                "reference": "eaf417b03ec0086f163669fe51ac90dfae659ea4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TailoredTunes\\": "src/TailoredTunes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLV2"
+            ],
+            "authors": [
+                {
+                    "name": "Meza",
+                    "email": "meza@tailored-tunes.com",
+                    "homepage": "http://tailored-tunes.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A slack adapter",
+            "keywords": [
+                "notification",
+                "slack"
+            ],
+            "time": "2014-06-25 15:04:23"
+        }
     ],
     "packages-dev": [
         {
