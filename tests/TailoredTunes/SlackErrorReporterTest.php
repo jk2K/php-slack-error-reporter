@@ -17,6 +17,7 @@ class SlackErrorReporterTest extends \PHPUnit_Framework_TestCase
 
     private $errorChannel = '#errors';
     private $exceptionChannel = '#exceptions';
+    private $username = 'test';
 
     public function setUp()
     {
@@ -28,7 +29,13 @@ class SlackErrorReporterTest extends \PHPUnit_Framework_TestCase
 
         $this->errorChannel = $this->randomSring();
         $this->exceptionChannel = $this->randomSring();
-        $this->errorHandler = new SlackErrorReporter($this->slack, $this->errorChannel, $this->exceptionChannel);
+        $this->username = $this->randomSring();
+        $this->errorHandler = new SlackErrorReporter(
+            $this->slack,
+            $this->username,
+            $this->errorChannel,
+            $this->exceptionChannel
+        );
 
     }
 
@@ -39,7 +46,7 @@ class SlackErrorReporterTest extends \PHPUnit_Framework_TestCase
             realpath(__FILE__),
             __LINE__ + 3
         );
-        $this->slack->expects($this->once())->method('send')->with($text, $this->errorChannel);
+        $this->slack->expects($this->once())->method('send')->with($text, $this->errorChannel, $this->username);
         trigger_error('error');
     }
 
@@ -63,7 +70,8 @@ class SlackErrorReporterTest extends \PHPUnit_Framework_TestCase
             __LINE__+4,
             $msg
         );
-        $this->slack->expects($this->once())->method('send')->with($text, $this->exceptionChannel);
+        $this->slack->expects($this->once())->method('send')
+            ->with($text, $this->exceptionChannel, $this->username);
         $this->errorHandler->exceptionHandler(new \Exception($msg));
     }
 

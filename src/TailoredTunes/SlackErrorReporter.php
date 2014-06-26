@@ -5,6 +5,7 @@ namespace TailoredTunes;
 class SlackErrorReporter
 {
 
+    const DEFAULT_CHANNEL = '#errors';
 
     /**
      * @var string
@@ -18,20 +19,29 @@ class SlackErrorReporter
      * @var SlackNotifier
      */
     private $slack;
+    /**
+     * @var string
+     */
+    private $username;
 
-    public function __construct(SlackNotifier $slack, $errorChannel = '#errors', $exceptionChannel = '#errors')
-    {
+    public function __construct(
+        SlackNotifier $slack,
+        $username = '',
+        $errorChannel = self::DEFAULT_CHANNEL,
+        $exceptionChannel = self::DEFAULT_CHANNEL
+    ) {
         $this->errorChannel = $errorChannel;
         $this->exceptionChannel = $exceptionChannel;
         set_error_handler(array($this, "errorHandler"));
         set_exception_handler(array($this, "exceptionHandler"));
         $this->slack = $slack;
+        $this->username = $username;
     }
 
     public function errorHandler($errno, $errstr, $errfile, $errline)
     {
         $errorMsg = sprintf("ERROR - [%s] %s:%d - %s", $errno, $errfile, $errline, $errstr);
-        $this->slack->send($errorMsg, $this->errorChannel);
+        $this->slack->send($errorMsg, $this->errorChannel, $this->username);
     }
 
     public function exceptionHandler(\Exception $e)
@@ -43,6 +53,6 @@ class SlackErrorReporter
             $e->getLine(),
             $e->getMessage()
         );
-        $this->slack->send($errorMsg, $this->exceptionChannel);
+        $this->slack->send($errorMsg, $this->exceptionChannel, $this->username);
     }
 }
