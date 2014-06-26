@@ -5,6 +5,7 @@ Report errors directly to slack for quick fixes.
 
 > We use this only on our production environments. By the time the code gets deployed, in theory, it should
 never throw any errors or exceptions. When it does, it's important enough that we instantly get notified.
+
 ![](doc/example.png)
 
 
