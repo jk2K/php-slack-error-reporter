@@ -27,7 +27,7 @@ use TailoredTunes\SlackErrorReporter;
 $slackWebhookUrl = "http://team.slack.com/whatever";
 
 $slack = new SlackNotifier($slackWebhookUrl);
-$usernameForMessage = $_SERVER["HTTP_HOST"];
+$usernameForMessage = $_ENV['WEB_NODE_NAME'];
 new SlackErrorReporter($slack, $usernameForMessage, '#errors', '#exceptions');
 
 ```
