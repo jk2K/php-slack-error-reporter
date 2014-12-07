@@ -40,12 +40,14 @@ class SlackErrorReporter
 
     public function errorHandler($errno, $errstr, $errfile, $errline)
     {
+        if (error_reporting() === 0) return;
         $errorMsg = sprintf("ERROR - [%s] %s:%d - %s", $errno, $errfile, $errline, $errstr);
         $this->slack->send($errorMsg, $this->errorChannel, $this->username);
     }
 
     public function exceptionHandler(\Exception $e)
     {
+        if (error_reporting() === 0) return;
         $errorMsg = sprintf(
             "EXCEPTION - [%s] %s:%d - %s\nStacktrace:\n\n%s",
             $e->getCode(),
