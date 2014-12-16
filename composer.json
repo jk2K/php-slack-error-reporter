@@ -3,7 +3,7 @@
 	"description": "A slack adapter for error reporting",
 	"type": "library",
 	"keywords": ["slack", "notification"],
-	"license": "GPLV2",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Meza",
