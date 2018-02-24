@@ -48,7 +48,7 @@ class SlackErrorReporter
         $this->slack->send($errorMsg, $this->errorChannel, $this->username);
     }
 
-    public function exceptionHandler($e)
+    public function exceptionHandler(\Throwable $e)
     {
         if (error_reporting() === 0) {
             return;
